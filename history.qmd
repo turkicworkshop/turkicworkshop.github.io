@@ -1,0 +1,72 @@
+---
+title: ""
+---
+
+
+[Faruk Akkuş][fa] and [Deniz Özyıldız][do] started it in 2015 as a collaboration between Penn (Faruk) and UMass Amherst (Deniz), and originally called it Turkish, Turkic, and the Languages of Turkey. At the [Tunnel Bar in Northampton MA][tb], someone initially suggested "*tutu*" as the nickname. Inspired by regex, someone else suggested "*Tu+*", and it sounded better.
+
+Losing a third of the alliteration but gaining in neutrality, [Paloma Jeretič][pj] and [Yağmur Sağ][ys] changed the name in 2019 to what it is now. Paloma and Yağmur also arranged for the Linguistic Society of America to publish our proceedings.
+
+
+## Information about past workshops
+
+
+```{r}
+#| label: render-tuplus-list
+#| results: asis
+#| echo: false
+
+library(yaml)
+
+data <- yaml::read_yaml("./history.yaml", readLines.warn=FALSE)$tuplus
+
+render_item <- function(x) {
+  # header: "Tu+ 8 · Harvard, March 4–5, 2023 (hybrid)"
+  parts <- c(
+    sprintf("Tu+ %s", x$n),
+    x$host,
+    x$dates
+  )
+  header <- sprintf("- %s · %s%s",
+                    parts[1],
+                    parts[2],
+                    ifelse(nchar(parts[3]) > 0, paste0(", ", parts[3]), ""))
+
+  # optional "(mode)"
+  if (!is.null(x$mode) && nchar(x$mode) > 0) {
+    header <- paste0(header, " (", x$mode, ")")
+  }
+
+  # links block: [[proceedings](url), [program](url)]
+  link_bits <- character(0)
+  if (!is.null(x$links$proceedings) && nchar(x$links$proceedings) > 0) {
+    link_bits <- c(link_bits, sprintf("[proceedings](%s)", x$links$proceedings))
+  }
+  if (!is.null(x$links$program) && nchar(x$links$program) > 0) {
+    link_bits <- c(link_bits, sprintf("[program](%s)", x$links$program))
+  }
+
+  if (length(link_bits) > 0) {
+    header <- paste0(header, " [", paste(link_bits, collapse = ", "), "]")
+  }
+
+  header
+}
+
+lines <- vapply(data, render_item, character(1))
+cat(paste(lines, collapse = "\n\n"))
+```
+
+
+
+
+
+
+
+
+
+[fa]: https://farukakkus.wordpress.com
+[do]: https://deniz.fr/
+[tb]: https://maps.app.goo.gl/5i3pobsHsXnYADbb8
+[pj]: https://web.sas.upenn.edu/paloma-jeretic/
+[ys]: https://www.yagmursag.com

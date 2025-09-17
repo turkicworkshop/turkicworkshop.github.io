@@ -1,0 +1,15 @@
+---
+title: ""
+format: html
+---
+
+TU+ is an annual workshop focusing on all aspects of linguistic research on **Turkic languages**, on **languages in contact with Turkic**, and on **languages spoken in regions where Turkic languages are spoken**. The workshop is a forum for data-driven, theoretically informed research across phonology, morphology, syntax, semantics, pragmatics, psycholinguistics, neurolinguistics, historical linguistics, and computational approaches.
+
+- [TU+11][thisyear] will be hosted in MIT, April 11-12, 2025.
+- [Proceedings][p] from previous conferences are hosted by LSA.
+- For question and comments: [streering@turkicworkshop.org][m]
+
+
+[m]: mailto:streering@turkicworkshop.org
+[p]: https://journals.linguisticsociety.org/proceedings/index.php/tu/issue/archive
+[thisyear]: https://turkicworkshop.github.io/tu11

@@ -1,0 +1,28 @@
+project:
+  type: website
+
+website:
+  title: "TU+"
+
+format:
+  html:
+    theme: default
+    css: styles.css
+    include-before-body:
+      - header.html
+    include-after-body:
+      - footer.html  
+      - text: |
+          <script>
+          (function () {
+            const here = window.location.pathname.split('/').pop() || 'index.html';
+            const links = document.querySelectorAll('#fake-navbar .footer-nav a');
+            links.forEach(a => {
+              const href = a.getAttribute('href');
+              // match by file name (handles relative paths)
+              if (href && (href === here || href.endsWith('/' + here))) {
+                a.setAttribute('aria-current', 'page');
+              }
+            });
+          })();
+          </script>
