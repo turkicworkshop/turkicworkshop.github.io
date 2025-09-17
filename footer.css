@@ -1,0 +1,41 @@
+
+#fake-navbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1040;
+  height: var(--footer-h);
+  box-sizing: border-box;      /* include border in height */
+  background: #fff;
+  box-shadow: 0 -2px 10px rgba(0,0,0,.04);
+  overflow: hidden;            /* ensure inner content can't extend height */
+  padding-bottom: 20px;
+}
+
+/* Footer link row — center perfectly and fit the fixed height */
+.footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  height: 100%;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+/* Bigger, bolder links; no unexpected line-height growth */
+.footer-nav a {
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 0.5;
+  color: #0B3C5D;
+  white-space: nowrap;
+}
+
+.footer-nav a:hover {
+  color: #328CC1;
+}
+.footer-nav a[aria-current="page"] {
+  color: #328CC1;
+  text-decoration: underline;
+}

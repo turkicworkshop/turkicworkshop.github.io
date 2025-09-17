@@ -1,0 +1,80 @@
+
+/* Always reserve vertical scrollbar space to prevent layout shift */
+html {
+  overflow-y: scroll;          /* always show v-scrollbar slot */
+  scrollbar-gutter: stable;    /* modern browsers: reserve space cleanly */
+}
+
+/* Single source of truth for footer height */
+:root { 
+  --footer-h: 76px;   /* adjust footer height here */
+  --hero-h: 200px;    /* default hero height (updated by script) */
+}
+
+/* Keep all content above the fixed footer */
+body {
+  margin: 0;
+  overflow-x: hidden;          /* prevent horizontal phantom scroll */
+  /* padding-top: calc(var(--hero-h) + 12px);   push content below fixed hero */
+}
+
+/* Make in-page anchor jumps land below the fixed hero */
+html { scroll-padding-top: calc(var(--hero-h) + 12px); }
+h1[id], h2[id], h3[id], h4[id] { scroll-margin-top: calc(var(--hero-h) + 12px); }
+
+
+
+/* === STABILIZE SCROLLBAR === */
+html {
+  overflow-y: scroll;          /* always reserve vertical scrollbar */
+  scrollbar-gutter: stable;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;          /* prevent horizontal scroll */
+}
+
+/* === HERO / TITLE BLOCK BANNER (same on all pages) === */
+.quarto-title-block .quarto-title-banner {
+  background: #c1dcec !important;   /* pale blue hero background */
+  border-radius: 16px;
+  max-width: 500px;
+  margin: 1.5rem auto 2rem auto;    /* centered + spacing */
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* Title (TU+) */
+.quarto-title h1.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0B3C5D;
+  margin: 0 0 .5rem 0;
+}
+
+/* Date/location line */
+.quarto-title .date {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #334155;
+  margin: 0 0 .5rem 0;
+}
+
+/* Subtitle */
+.quarto-title .subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #475569;
+  margin: 0;
+}
+
+/* Content spacing after banner (banner already provides margin) */
+#quarto-content { margin-top: 0; }
+
+/* Small screens */
+@media (max-width: 640px) {
+  .quarto-title h1.title { font-size: 2.3rem; }
+  .quarto-title .date     { font-size: 1.1rem; }
+  .quarto-title .subtitle { font-size: 1rem;  }
+}
