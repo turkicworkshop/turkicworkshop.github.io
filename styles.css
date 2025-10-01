@@ -1,90 +1,150 @@
-/* === STABILIZE SCROLLBAR + KILL PHANTOM OVERFLOW === */
-
-/* Always reserve vertical scrollbar space to prevent layout shift */
-html {
-  overflow-y: scroll;          /* always show v-scrollbar slot */
-  scrollbar-gutter: stable;    /* modern browsers: reserve space cleanly */
+/* ==== GLOBAL & LAYOUT SAFETY ==== */
+:root {
+  /* desktop default */
+  --footer-h: 76px;
 }
 
-/* Single source of truth for footer height */
-:root { --footer-h: 76px; }    /* make it bigger here; tune 72–84px as you like */
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
 
-/* Keep all content above the fixed footer */
 body {
   margin: 0;
-  overflow-x: hidden;          /* prevent horizontal phantom scroll */
+  overflow-x: hidden;
+  /* keep content above fixed footer (includes iOS safe area) */
+  padding-bottom: calc(var(--footer-h) + max(env(safe-area-inset-bottom), 12px));
 }
 
-/* Fake navbar (footer) — fixed, exact height, no overflow contribution */
+/* ==== FIXED FOOTER / NAVBAR ==== */
 #fake-navbar {
   position: fixed;
-  left: 0; right: 0; bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1040;
   height: var(--footer-h);
-  box-sizing: border-box;      /* include border in height */
+  box-sizing: border-box;
   background: #fff;
-  /* border-top: 0.5px solid #e2e8f0; */
-  box-shadow: 0 -2px 10px rgba(0,0,0,.04);
-  overflow: hidden;            /* ensure inner content can't extend height */
-  padding-bottom: 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, .04);
+  overflow: hidden;
+  /* give a little breathing room that also respects safe area */
+  padding-bottom: max(env(safe-area-inset-bottom), 8px);
 }
 
-/* Footer link row — center perfectly and fit the fixed height */
+/* Center the row; single line */
 .footer-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6rem;
   height: 100%;
   margin: 0;
-  padding: 0 1rem;             /* no vertical padding, avoids extra height */
+  padding: 0 1rem;
+  gap: 6rem;
+  /* desktop roomy */
+  flex-wrap: nowrap;
+  /* keep it one line */
 }
 
-/* Bigger, bolder links; no unexpected line-height growth */
+/* Link styling */
 .footer-nav a {
   text-decoration: none;
   font-weight: 800;
   font-size: 1.5rem;
-  line-height: 0.5;              /* lock line height; we'll center with flex */
+  /* desktop size */
+  line-height: 1;
+  /* avoid extra vertical growth */
   color: #0B3C5D;
-  white-space: nowrap;         /* keep labels on one line */
+  white-space: nowrap;
+  /* keep each label together */
+  letter-spacing: -0.01em;
+  /* subtle tightening that helps fit */
 }
 
-.footer-nav a:hover{
+.footer-nav a:hover {
   color: #328CC1;
 }
+
 .footer-nav a[aria-current="page"] {
   color: #328CC1;
   text-decoration: underline;
 }
 
+/* ==== RESPONSIVE: TABLET ==== */
+@media (max-width: 900px) {
+  :root {
+    --footer-h: 64px;
+  }
 
+  .footer-nav {
+    gap: clamp(1rem, 4vw, 2rem);
+    /* tighten gaps on narrower viewports */
+    padding: 0 0.75rem;
+  }
 
+  .footer-nav a {
+    /* scale text with viewport so all links remain visible without wrapping */
+    font-size: clamp(0.95rem, 2.4vw, 1.25rem);
+  }
+}
 
-/* =============================== */
+/* ==== RESPONSIVE: PHONE (DENSE MODE) ==== */
+@media (max-width: 560px) {
+  :root {
+    --footer-h: 54px;
+  }
 
-/* === HERO SECTION AT TOP (no h1) === */
+  .footer-nav {
+    gap: clamp(0.5rem, 2.5vw, 1rem);
+    /* keep centered, but allow tiny inner padding */
+    padding: 0 0.5rem;
+  }
+
+  .footer-nav a {
+    /* smaller floor + stronger scaling to keep *everything* on one line */
+    font-size: clamp(0.78rem, 3.4vw, 1rem);
+    line-height: 1;
+    /* keep the row tight */
+  }
+}
+
+/* Optional ultra-small safety net:
+   If you ever have *many* links, this shrinks just a bit more. */
+@media (max-width: 380px) {
+  :root {
+    --footer-h: 50px;
+  }
+
+  .footer-nav {
+    gap: clamp(0.4rem, 2vw, 0.75rem);
+  }
+
+  .footer-nav a {
+    font-size: clamp(0.7rem, 3.6vw, 0.9rem);
+  }
+}
+
+/* ==== YOUR HERO STYLES (unchanged) ==== */
 #hero-section {
   max-width: 1000px;
-  margin: 2rem auto 3rem auto;   /* spacing around */
+  margin: 2rem auto 3rem auto;
   padding-bottom: 1em;
   background-color: #c1dcec;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Title, meta, subtitle are now divs */
 .hero-title {
   font-size: 3rem;
-  margin: 0 0 0rem 0;
+  margin: 0 0 0rem;
   color: #0B3C5D;
   font-weight: 800;
 }
 
 .hero-meta {
   font-size: 1.25rem;
-  margin: 0 0 .5rem 0;
+  margin: 0 0 .5rem;
   color: #334155;
 }
 
@@ -92,4 +152,19 @@ body {
   font-size: 1.1rem;
   margin: 0;
   color: #475569;
+}
+
+/* Optional: make the hero text scale down on phones too */
+@media (max-width: 560px) {
+  .hero-title {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .hero-meta {
+    font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.85rem, 3.2vw, 1rem);
+  }
 }
