@@ -7,9 +7,9 @@ Tu+ is an annual workshop focusing on all aspects of linguistic research on **Tu
 
 - [TU+11][thisyear] will be hosted in MIT, April 11-12, 2025.
 - [Proceedings][p] from previous conferences are hosted by LSA.
-- For question and comments: [streering@turkicworkshop.org][m]
+- For question and comments: [turkicworkshop@gmail.com][m]
 
 
-[m]: mailto:streering@turkicworkshop.org
+[m]: mailto:turkicworkshop@gmail.com
 [p]: https://journals.linguisticsociety.org/proceedings/index.php/tu/issue/archive
 [thisyear]: https://turkicworkshop.github.io/tu11
