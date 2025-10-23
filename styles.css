@@ -124,34 +124,58 @@ body {
   }
 }
 
-/* ==== YOUR HERO STYLES (unchanged) ==== */
 #hero-section {
-  max-width: 1000px;
+  position: relative;
+  max-width: 975px;
   margin: 2rem auto 3rem auto;
-  padding-bottom: 1em;
-  background-color: #c1dcec;
+  padding: 6rem 2rem; 
+  min-height: 420px;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* background image */
+  /* background-image: url('images/strata.png');  */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* add a semi-transparent overlay */
+#hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(50, 140, 193, 0.65); /*#328CC1: 50, 140, 193*/
+  border-radius: 16px;
+  z-index: 0;
+}
+
+/* text styles */
+.hero-title,
+.hero-meta,
+.hero-subtitle {
+  position: relative;
+  z-index: 1; /* keeps text above overlay */
 }
 
 .hero-title {
   font-size: 3rem;
-  margin: 0 0 0rem;
-  color: #0B3C5D;
+  margin-bottom: 0.5rem;
   font-weight: 800;
 }
 
 .hero-meta {
   font-size: 1.25rem;
-  margin: 0 0 .5rem;
-  color: #334155;
+  margin-bottom: 0.25rem;
+  color: #f4f4f4;
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
-  margin: 0;
-  color: #475569;
+  color: #e0e0e0;
 }
 
 /* Optional: make the hero text scale down on phones too */
