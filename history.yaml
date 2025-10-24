@@ -1,86 +1,78 @@
 # data/tuplus.yml
 tuplus:
-  - n: 11
-    host: "TBA"
-    dates: ""
-    mode: ""
-    links: {}   # no links yet
+  - count: 11
+    host: "[MIT](./tu11)"
+    dates: "April 11-12, 2025"
+    mode: "in person"
+    prog: ""
+    proc: ""
 
-  - n: 10
+  - count: 10
     host: "USC"
     dates: "March 1-2, 2024"
     mode: ""
-    links:
-      program: "https://www.google.com"   # put URL here (or leave empty)
+    prog: "https://deniz.fr/tuplus/programs/tuplusten-program.pdf"   # put URL here (or leave empty)
+    proc: ""
 
-  - n: 9
+  - count: 9
     host: "Cornell"
     dates: "March 23-24, 2024"
     mode: ""
-    links:
-      proceedings: "https://www.google.com"
-      program: "https://www.google.com"
+    proc: "https://journals.linguisticsociety.org/proceedings/index.php/tu/issue/view/197"
+    prog: "./program/tuplusnine.pdf"
 
-  - n: 8
+  - count: 8
     host: "Harvard"
     dates: "March 4-5, 2023"
     mode: "hybrid"
-    links:
-      proceedings: "https://www.google.com"
-      program: "https://www.google.com"
+    proc: "https://journals.linguisticsociety.org/proceedings/index.php/tu/issue/view/187"
+    prog: "https://sites.google.com/view/tuplus8workshop/program"
 
-  - n: 7
+  - count: 7
     host: "UConn"
     dates: "February 18-19, 2022"
     mode: "online"
-    links:
-      proceedings: "https://www.google.com"
-      program: "https://www.google.com"
+    proc: "https://journals.linguisticsociety.org/proceedings/index.php/tu/issue/view/182"
+    prog: "./program/tuplusseven.pdf"
 
-  - n: 6
+  - count: 6
     host: "University of Toronto"
     dates: "February 19-20, 2021"
     mode: "online"
-    links:
-      proceedings: "https://www.google.com"
-      program: "https://www.google.com"
+    proc: "https://journals.linguisticsociety.org/proceedings/index.php/tu/issue/view/176"
+    prog: "./program/tuplussix.pdf"
 
-  - n: 5
+  - count: 5
     host: "University of Delaware"
     dates: "February 8-9, 2020"
     mode: ""
-    links:
-      proceedings: "https://www.google.com"
-      program: "https://www.google.com"
+    proc: "https://journals.linguisticsociety.org/proceedings/index.php/tu/issue/view/170"
+    prog: "./program/tuplusfive.pdf"
 
-  - n: 4
+  - count: 4
     host: "NYU and Rutgers"
     dates: "February 16-17, 2019"
     mode: ""
-    links:
-      proceedings: "https://www.google.com"
-      program: "https://www.google.com"
+    proc: "https://journals.linguisticsociety.org/proceedings/index.php/tu/issue/view/163"
+    prog: "./program/tuplusfour.pdf"
 
-  - n: 3
+  - count: 3
     host: "UCLA and USC"
     dates: "November 18-19, 2017"
     mode: ""
-    links:
-      proceedings: "https://www.google.com"
-      program: "https://www.google.com"
+    proc: "https://linguistics.ucla.edu/tu3-proceedings/"
+    prog: "./program/tuplusthree.pdf"
 
-  - n: 2
+  - count: 2
     host: "Indiana University Bloomington"
     dates: "November 19-20, 2016"
     mode: ""
-    links:
-      proceedings: "https://www.google.com"
-      program: "https://www.google.com"
+    proc: "https://scholarworks.iu.edu/journals/index.php/iulcwp/issue/view/1725"
+    prog: "./program/tuplustwo.pdf"
 
-  - n: 1
+  - count: 1
     host: "UMass Amherst and Yale"
     dates: "November 21-22, 2015"
     mode: ""
-    links:
-      proceedings: "https://www.google.com"
-      program: "https://www.google.com"
+    proc: ""
+    prog: "./program/tuplusone.pdf"

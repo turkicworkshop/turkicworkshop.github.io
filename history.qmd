@@ -15,52 +15,72 @@ Losing a third of the alliteration but gaining in neutrality, [Paloma Jeretič][
 #| label: render-tuplus-list
 #| results: asis
 #| echo: false
-
+#| 
 library(yaml)
 
-data <- yaml::read_yaml("./history.yaml", readLines.warn=FALSE)$tuplus
+data <- yaml::read_yaml("./history.yaml", readLines.warn = FALSE)$tuplus
 
-render_item <- function(x) {
-  # header: "Tu+ 8 · Harvard, March 4–5, 2023 (hybrid)"
+for (i in seq_along(data)) {
+  entry <- data[[i]]
+
   parts <- c(
-    sprintf("Tu+ %s", x$n),
-    x$host,
-    x$dates
+    sprintf("Tu+%s", entry$count),
+    entry$host %||% "",
+    entry$dates %||% ""
   )
-  header <- sprintf("- %s · %s%s",
-                    parts[1],
-                    parts[2],
-                    ifelse(nchar(parts[3]) > 0, paste0(", ", parts[3]), ""))
 
-  # optional "(mode)"
-  if (!is.null(x$mode) && nchar(x$mode) > 0) {
-    header <- paste0(header, " (", x$mode, ")")
+  header <- sprintf(
+    "- %s · %s%s",
+    parts[1],
+    parts[2],
+    if (nzchar(parts[3])) paste0(", ", parts[3]) else ""
+  )
+
+  if (!is.null(entry$mode) && nzchar(entry$mode)) {
+    header <- paste0(header, " (", entry$mode, ")")
   }
 
-  # links block: [[proceedings](url), [program](url)]
   link_bits <- character(0)
-  if (!is.null(x$links$proceedings) && nchar(x$links$proceedings) > 0) {
-    link_bits <- c(link_bits, sprintf("[proceedings](%s)", x$links$proceedings))
+  if (!is.null(entry$proc) && nzchar(entry$proc)) {
+    link_bits <- c(link_bits, sprintf("[proceedings](%s){target='_blank'}", entry$proc))
   }
-  if (!is.null(x$links$program) && nchar(x$links$program) > 0) {
-    link_bits <- c(link_bits, sprintf("[program](%s)", x$links$program))
+  if (!is.null(entry$prog) && nzchar(entry$prog)) {
+    link_bits <- c(link_bits, sprintf("[program](%s){target='_blank'}", entry$prog))
   }
 
   if (length(link_bits) > 0) {
     header <- paste0(header, " [", paste(link_bits, collapse = ", "), "]")
   }
 
-  header
+  cat(header, "\n", sep = "")
 }
 
-lines <- vapply(data, render_item, character(1))
-cat(paste(lines, collapse = "\n\n"))
+# helper: pipe-safe null-coalescing
+`%||%` <- function(a, b) if (is.null(a)) b else a
+
 ```
 
 
 
 
+## Group pictures
 
+**Tu+ 10 at USC**
+
+![](./images/tu10.jpg)
+
+
+**Tu+ 8 at Harvard**
+
+![](./images/tu8.jpg)
+
+**Tu+ 4 at NYU**
+
+![](./images/tu4.jpg)
+
+**Tu+ 2 in Indiana**
+
+![](./images/tu2.jpg)
 
 
 
