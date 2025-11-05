@@ -5,21 +5,21 @@ title: ""
 Stay up to date with **Tu+** announcements.
 
 ## How to Join
-- Subscribe via [Google Groups][gg]  
+- Subscribe via [Google Groups][gg]
 - Or email: [turkicworkshop@gmail.com][m]
 
 We use the list to announce:
 
-- Call for Papers  
-- Registration deadlines  
-- Program updates  
+- Call for Papers
+- Registration deadlines
+- Program updates
 - Community events
 
 
 ## Join as a Reviewer
 
-Link to be announced. 
+Link to be announced.
 
 
 [m]: mailto:turkicworkshop@gmail.com
-[gg]: https://groups.google.com/g/turkicworkshop/
+[gg]: https://forms.gle/RHkMvACuJhYSeXN97
