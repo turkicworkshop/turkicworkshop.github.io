@@ -2,14 +2,14 @@
 tuplus:
   - count: 11
     host: "[MIT](./tu11)"
-    dates: "April 11-12, 2025"
+    dates: "April 11-12, 2026"
     mode: "in person"
     prog: ""
     proc: ""
 
   - count: 10
     host: "USC"
-    dates: "March 1-2, 2024"
+    dates: "March 1-2, 2025"
     mode: ""
     prog: "https://deniz.fr/tuplus/programs/tuplusten-program.pdf"   # put URL here (or leave empty)
     proc: ""
